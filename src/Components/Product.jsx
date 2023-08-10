@@ -55,7 +55,7 @@ function Product() {
   const [items, setItems] = useState([]);
   const products = [
     {
-      url:"https://m.media-amazon.com/images/I/91o0m2iIpVL.jpg",
+      url: "https://m.media-amazon.com/images/I/91o0m2iIpVL.jpg",
       Product: "Ashirwad",
       Price: "400",
       category: "flour",
@@ -194,7 +194,7 @@ function Product() {
     }
     setSelectCategory(category); // Update selected category
   };
-  const categories = ["All", "flour", "soap","fruits", "pluses",];
+  const categories = ["All", "flour", "soap", "fruits", "pluses"];
 
   const addProduct = (product, price) => {
     const itemIndex = items.findIndex((item) => item.Product === product);
@@ -231,21 +231,21 @@ function Product() {
     0
   );
 
-
   const [likedProducts, setLikedProducts] = useState([]);
-
 
   useEffect(() => {
     localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
-  },[likedProducts])
+  }, [likedProducts]);
   // },[likedProducts]) state dependency call when likedProducts changes
   // },[]) call on page load
   // },) call on every render
   const addToFavorite = (product, price, url) => {
     const favoriteProduct = { Product: product, Price: price, url: url };
-    setLikedProducts((prevLikedProducts) => [...prevLikedProducts, favoriteProduct]);
-
-  }
+    setLikedProducts((prevLikedProducts) => [
+      ...prevLikedProducts,
+      favoriteProduct,
+    ]);
+  };
   // const addProduct = (product, price) => {
   //   console.log(product, price);
 
@@ -307,7 +307,6 @@ function Product() {
     setSelectedCoupon(foundCoupon);
   };
 
-
   const printReceipt = () => {
     const receiptContent = generateReceiptContent();
 
@@ -328,118 +327,134 @@ function Product() {
 
   return (
     <>
-    {/* <Login/>
+      {/* <Login/>
     <Register/> */}
-    <div className=" sticky top-0 flex z-10 align-middle main-header bg-blue-500 overflow-hidden">
-        <div id="button" className="ml-10 text-xl font-bold">
-          <header>Appm pos</header>
+    <div className="h-screen bg-blue-100">
+      <div className=" sticky top-0 flex z-10 justify-between main-header bg-blue-500">
+        <div id="button" className="ml-10 text-xl mt-4 font-bold">
+          <header>Grocery pos</header>
         </div>
 
-        <div id="button" className="space-x-3 mr-10 w-1/2 justify-evenly">
-          <div className="Print-Section flex p-2  cursor-pointer">
-            <div className="mr-2">
+        <div className="flex p-2 w-1/4 justify-between">
+          <div className="Print-Section flex cursor-pointer mt-2 mr-4">
+            <div className="mr-1">
               <h4 onClick={printReceipt}>Print Recipt </h4>
             </div>
             <div className="Print_Icon">
               <i class="fa-solid fa-print" onClick={printReceipt}></i>
             </div>
           </div>
-          <div className="flex">
+          <div className="flex mt-2">
             <Link to="/like">
-              <i class="fa-regular fa-heart fa-lg"></i>
+              <i className="fa-regular fa-heart fa-lg mr-1"></i>
             </Link>
-
+          </div>
+          <div>
             <Link className="bg-orange-100" id="button1" to="/login">
               Log in
-              <img className="h-6 w-6" src="./images/login.png" alt="login-logo" />
+              <img
+                className="h-6 w-6"
+                src="./images/login.png"
+                alt="login-logo"
+              />
             </Link>
+            </div>
+            <div>
             <Link className="bg-orange-100" id="button1" to="/register">
               Register
-              <img className="h-6 w-6" src="./images/register.png" alt="register-logo" />
+              <img
+                className="h-6 w-6"
+                src="./images/register.png"
+                alt="register-logo"
+              />
             </Link>
           </div>
         </div>
       </div>
-    <div className="main p-0.5 md:h-screen">
-      <div class="md:grid grid-cols-2 gap-4 sm:grid grid-cols-1">
-        <div>
-          <nav class="sticky top-0 md:bg-black ">
-            <div
-              class="hidden w-full md:block md:w-auto p-2 ps-5 bg-black"
-              id="navbar-default"
-            >
-              <ul class="md:font-medium flex flex-col p-4 md:p-0 mt-4 bg-black md:flex-row md:space-x-8 md:mt-0 ">
-                {categories.map(function (item, i) {
-                  return (
-                    <li key={i}>
-                      <a
-                        href="#!"
-                        className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent text-white "
-                      >
-                        <button onClick={() => handlechange(item)}>
-                          {item}
-                        </button>
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </nav>
+      <div className="main p-0.5 md:h-screen">
+        <div class="md:grid grid-cols-2 gap-4 sm:grid grid-cols-1">
           <div>
-            <div className="flex justify-center">
-              <input
-                type="search"
-                placeholder="Search Products"
-                className="w-full mx-0.5 border border-blacknpm mt-3 bg-orange-100 text-black outline-none"
-                onChange={handleSearch}
-              ></input>
-            </div>
-          <div className="scrollable-container h-screen overflow-y-auto">
-
-            <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-4">
-              {filteredProducts.map((item, index) => {
-                return (
-                  <div
-                    key={index}
-                    class="block rounded-sm bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
-                  >
-                    <i class="fa-regular fa-heart fa-sm" onClick={() =>
+            <nav class="sticky top-0 md:bg-black ">
+              <div
+                class="hidden w-full md:block md:w-auto p-2 ps-5 bg-black"
+                id="navbar-default"
+              >
+                <ul class="md:font-medium flex flex-col p-4 md:p-0 mt-4 bg-black md:flex-row md:space-x-8 md:mt-0 ">
+                  {categories.map(function (item, i) {
+                    return (
+                      <li key={i}>
+                        <a
+                          href="#!"
+                          className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent text-white "
+                        >
+                          <button onClick={() => handlechange(item)}>
+                            {item}
+                          </button>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </nav>
+            <div>
+              <div className="flex justify-center">
+                <input
+                  type="search"
+                  placeholder="Search Products"
+                  className="w-full mx-0.5 border border-blacknpm mt-3 bg-orange-100 text-black outline-none"
+                  onChange={handleSearch}
+                ></input>
+              </div>
+              <div className="scrollable-container h-screen overflow-y-auto">
+                <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 bg-blue-400 ">
+                  {filteredProducts.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        class="block rounded-sm bg-blue-200 hover:bg-blue-400 mt-4"
+                      >
+                        <div className="float-right mr-2">
+                          <i
+                            class="fa-regular fa-heart fa-sm"
+                            onClick={() =>
                               addToFavorite(item.Product, item.Price, item.url)
-                            }></i>
-                    <a href="#! flex-1">
-                      <img
-                        class="rounded-t-sm mx-auto"
-                        style={{ height: "80px" }}
-                        src={item.url}
-                        alt=""
-                      />
-                    </a>
-                    <div class="p-2 pb-5  text-center">
-                      <h5 class="mb-2 text-xl font-medium bg-orange-100">
-                        {item.Product}
-                      </h5>
-                      <h5 class="mb-2 mx-auto  font-medium bg-lime-600 text-white">
-                        ₹ {item.Price}
-                      </h5>
-                      <button
-                        type="button"
-                        class="inline-block bg-black text-white p-1 w-20 rounded-md "
-                        onClick={() => addProduct(item.Product, item.Price)}
-                      >
-                        Add
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
+                            }
+                          ></i>
+                        </div>
+                        <a href="#! flex-1">
+                          <img
+                            class="rounded-t-sm mx-auto"
+                            style={{ height: "80px" }}
+                            src={item.url}
+                            alt=""
+                          />
+                        </a>
+                        <div class="p-2 pb-5  text-center">
+                          <h5 class="mb-2 text-xl font-medium">
+                            {item.Product}
+                          </h5>
+                          <h5 class="mb-2 mx-auto  font-medium text-black">
+                            ₹ {item.Price}
+                          </h5>
+                          <button
+                            type="button"
+                            class="inline-block bg-black text-white p-1 w-20 rounded-md shadow-md hover:bg-orange-100 hover:text-black hover:shadow-lg"
+                            onClick={() => addProduct(item.Product, item.Price)}
+                          >
+                            Add
+                          </button> 
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
-          </div>
-        </div>
-        <div>
           <div>
-          <ItemsBoughtTable
+            <div>
+              <ItemsBoughtTable
                 items={items}
                 totalPrice={totalPrice}
                 taxCount={taxCount}
@@ -452,14 +467,15 @@ function Product() {
                 total={total}
               />
 
-             <Like likedProducts />
-          </div>
+              <Like likedProducts />
+            </div>
 
-          {/* <div className="w-96 bg-blue-500 h-24 border border-radius-4">
+            {/* <div className="w-96 bg-blue-500 h-24 border border-radius-4">
               <h2 className="text-xl">Pay</h2> */}
+          </div>
         </div>
       </div>
-    </div>
+      </div>
     </>
   );
 }
