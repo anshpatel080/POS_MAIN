@@ -47,10 +47,10 @@ function ItemsBoughtTable({
 
 
   return (
-    <div className="flex flex-col  h-screen">
+    <div className="flex flex-col h-screen bg-blue-100">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 flex-grow">
         <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8 ">
-          <div className="overflow-hidden border border-green-800 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+          <div className="border mx-2 border-green-800 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
             <table className="min-w-full text-center text-sm font-light ">
               <thead
                 className="border-b bg-neutral-50 f
@@ -106,7 +106,7 @@ function ItemsBoughtTable({
           </div>
         </div>
       </div>
-      <div className="w-full h-32 border rounded bg-orange-100 text-black mt-2 p-4 flex flex-col justify-between flex-shrink-0 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+      <div className="w-auto h-auto mx-2 h-32 border rounded bg-orange-100 text-black mt-2 p-4 flex flex-col justify-between flex-shrink-0 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
         <div className="flex justify-between">
           <span className="font-medium ">Sub Total:</span>
           <span className="whitespace-nowrap font-medium">
@@ -140,7 +140,7 @@ function ItemsBoughtTable({
           </select>
         </div>
       </div>
-      <div className="border w-auto h-16 bg-blue-600 flex justify-between mt-2 items-center p-8 mb-2 rounded">
+      <div className="border w-auto mx-2 h-16 bg-blue-600 flex justify-between mt-2 items-center p-8 mb-2 rounded">
         <div>
           <h1 className="text-lg font-bold">Pay</h1>
           <h4 className="font-medium italic">{totalQty} Items</h4>
