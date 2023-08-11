@@ -28,3 +28,7 @@
   text-align: center;
   justify-content: space-between;
 }
+
+.red-heart {
+  background-color: red;
+}
