@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
-
-
+import PaymentPopup from "./PaymentPopup";
 function ItemsBoughtTable({
   items,
   totalPrice,
@@ -13,7 +11,7 @@ function ItemsBoughtTable({
   grandTotal,
   total,
 }) {
-    // const handleselect = (subtotal, value, type) => {
+  // const handleselect = (subtotal, value, type) => {
   //   return type == percentage ? subtotal * (value / 100) : value;
   // };
 
@@ -44,7 +42,15 @@ function ItemsBoughtTable({
 
   // for print recipt
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  const openPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
     <div className="flex flex-col h-screen bg-blue-100">
@@ -168,7 +174,8 @@ function ItemsBoughtTable({
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-6 h-6"
+            className="w-6 h-6 cursor-pointer"
+            onClick={openPopup}
           >
             <path
               fillRule="evenodd"
@@ -177,6 +184,15 @@ function ItemsBoughtTable({
             />
           </svg>
         </div>
+      </div>
+      <div>
+        <PaymentPopup
+          isOpen={isPopupOpen}
+          onClose={closePopup}
+          total={
+            selectedCoupon?.type ? grandTotal.toFixed(2) : total.toFixed(2)
+          }
+        />
       </div>
     </div>
   );
