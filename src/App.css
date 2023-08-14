@@ -1,22 +1,21 @@
-
-#select{
+#select {
   display: flex;
   justify-content: center;
   font-size: 14px;
   font-weight: 500;
 }
-#select2{
+#select2 {
   display: flex;
   justify-content: center;
   font-size: 14px;
   font-weight: 500;
 }
-#button{
+#button {
   display: flex;
   justify-content: end;
 }
 
-#button1{
+#button1 {
   width: auto;
   border: 1px solid black;
   border-radius: 3px;
