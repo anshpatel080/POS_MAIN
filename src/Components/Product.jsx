@@ -55,7 +55,7 @@ function Product() {
   const [items, setItems] = useState([]);
   const products = [
     {
-      url: "https://m.media-amazon.com/images/I/91o0m2iIpVL.jpg",
+      url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjiONqQbCGyPcOsc6SKaVx_6_o7ArMx-rhyw&usqp=CAU",
       Product: "Ashirwad",
       Price: "400",
       category: "flour",
@@ -342,11 +342,11 @@ function Product() {
     <>
       {/* <Login/>
     <Register/> */}
-    <div className="h-screen bg-blue-100">
-      <div className=" sticky top-0 flex z-10 justify-between main-header bg-blue-500">
-        <div id="button" className="ml-10 text-xl mt-4 font-bold">
-          <header>Grocery pos</header>
-        </div>
+      <div className="h-screen bg-blue-100">
+        <div className=" sticky top-0 flex z-10 justify-between main-header bg-blue-500">
+          <div id="button" className="ml-10 text-xl mt-4 font-bold">
+            <header>Grocery pos</header>
+          </div>
 
           <div className="flex p-2 w-1/4 justify-between">
             <div className="Print-Section flex cursor-pointer mt-2 mr-4">
@@ -373,121 +373,127 @@ function Product() {
               </Link>
             </div>
             <div>
-            <Link className="bg-orange-100" id="button1" to="/register">
-              Register
-              <img
-                className="h-6 w-6"
-                src="./images/register.png"
-                alt="register-logo"
-              />
-            </Link>
+              <Link className="bg-orange-100" id="button1" to="/register">
+                Register
+                <img
+                  className="h-6 w-6"
+                  src="./images/register.png"
+                  alt="register-logo"
+                />
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="main p-0.5 md:h-screen">
-        <div class="md:grid grid-cols-2 gap-4 sm:grid grid-cols-1">
-          <div>
-            <nav class="sticky top-0 md:bg-black ">
-              <div
-                class="hidden w-full md:block md:w-auto p-2 ps-5 bg-black"
-                id="navbar-default"
-              >
-                <ul class="md:font-medium flex flex-col p-4 md:p-0 mt-4 bg-black md:flex-row md:space-x-8 md:mt-0 ">
-                  {categories.map(function (item, i) {
-                    return (
-                      <li key={i}>
-                        <a
-                          href="#!"
-                          className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent text-white "
-                        >
-                          <button onClick={() => handlechange(item)}>
-                            {item}
-                          </button>
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </nav>
+        <div className="main p-0.5 md:h-screen">
+          <div className="md:grid grid-cols-2 gap-4 sm:grid grid-cols-1">
             <div>
-              <div className="flex justify-center">
-                <input
-                  type="search"
-                  placeholder="Search Products"
-                  className="w-full mx-0.5 border border-blacknpm mt-3 bg-orange-100 text-black outline-none"
-                  onChange={handleSearch}
-                ></input>
-              </div>
-              <div className="scrollable-container h-screen overflow-y-auto">
-                <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 bg-blue-400 ">
-                  {filteredProducts.map((item, index) => {
-                    return (
-                      <div
-                        key={index}
-                        class="block rounded-sm bg-blue-200 hover:bg-blue-400 mt-4"
-                      >
-                        <div className="float-right mr-2">
-                          <i
-                            class="fa-regular fa-heart fa-sm"
-                            onClick={() =>
-                              addToFavorite(item.Product, item.Price, item.url)
-                            }
-                          ></i>
-                        </div>
-                        <a href="#! flex-1">
-                          <img
-                            class="rounded-t-sm mx-auto"
-                            style={{ height: "80px" }}
-                            src={item.url}
-                            alt=""
-                          />
-                        </a>
-                        <div class="p-2 pb-5  text-center">
-                          <h5 class="mb-2 text-xl font-medium">
-                            {item.Product}
-                          </h5>
-                          <h5 class="mb-2 mx-auto  font-medium text-black">
-                            ₹ {item.Price}
-                          </h5>
-                          <button
-                            type="button"
-                            class="inline-block bg-black text-white p-1 w-20 rounded-md shadow-md hover:bg-orange-100 hover:text-black hover:shadow-lg"
-                            onClick={() => addProduct(item.Product, item.Price)}
+              <nav className="sticky top-0 md:bg-black ">
+                <div
+                  className="hidden w-full md:block md:w-auto p-2 ps-5 bg-black"
+                  id="navbar-default"
+                >
+                  <ul className="md:font-medium flex flex-col p-4 md:p-0 mt-4 bg-black md:flex-row md:space-x-8 md:mt-0 ">
+                    {categories.map(function (item, i) {
+                      return (
+                        <li key={i}>
+                          <a
+                            href="#!"
+                            className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent text-white "
                           >
-                            Add
-                          </button> 
+                            <button onClick={() => handlechange(item)}>
+                              {item}
+                            </button>
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </nav>
+              <div>
+                <div className="flex justify-center">
+                  <input
+                    type="search"
+                    placeholder="Search Products"
+                    className="w-full mx-0.5 border border-blacknpm mt-3 bg-orange-100 text-black outline-none"
+                    onChange={handleSearch}
+                  ></input>
+                </div>
+                <div className="scrollable-container h-screen overflow-y-auto">
+                  <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 bg-blue-400 ">
+                    {filteredProducts.map((item, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className="block rounded-sm bg-blue-200 hover:bg-blue-400 mt-4"
+                        >
+                          <div className="float-right mr-2">
+                            <i
+                              className="fa-regular fa-heart fa-sm"
+                              onClick={() =>
+                                addToFavorite(
+                                  item.Product,
+                                  item.Price,
+                                  item.url
+                                )
+                              }
+                            ></i>
+                          </div>
+                          <a href="#! flex-1">
+                            <img
+                              className="rounded-t-sm mx-auto"
+                              style={{ height: "80px" }}
+                              src={item.url}
+                              alt=""
+                            />
+                          </a>
+                          <div className="p-2 pb-5  text-center">
+                            <h5 className="mb-2 text-xl font-medium">
+                              {item.Product}
+                            </h5>
+                            <h5 className="mb-2 mx-auto  font-medium text-black">
+                              ₹ {item.Price}
+                            </h5>
+                            <button
+                              type="button"
+                              className="inline-block bg-black text-white p-1 w-20 rounded-md shadow-md hover:bg-orange-100 hover:text-black hover:shadow-lg"
+                              onClick={() =>
+                                addProduct(item.Product, item.Price)
+                              }
+                            >
+                              Add
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div>
             <div>
-              <ItemsBoughtTable
-                items={items}
-                totalPrice={totalPrice}
-                taxCount={taxCount}
-                addProduct={addProduct}
-                setItems={setItems}
-                selectedCoupon={selectedCoupon}
-                handleSelect={handleSelect}
-                Coupon={Coupon}
-                grandTotal={grandTotal}
-                total={total}
-              />
+              <div>
+                <ItemsBoughtTable
+                  items={items}
+                  totalPrice={totalPrice}
+                  taxCount={taxCount}
+                  addProduct={addProduct}
+                  setItems={setItems}
+                  selectedCoupon={selectedCoupon}
+                  handleSelect={handleSelect}
+                  Coupon={Coupon}
+                  grandTotal={grandTotal}
+                  total={total}
+                />
 
                 <Like likedProducts />
               </div>
 
               {/* <div className="w-96 bg-blue-500 h-24 border border-radius-4">
               <h2 className="text-xl">Pay</h2> */}
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </>
   );
